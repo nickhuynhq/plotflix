@@ -32,15 +32,21 @@ function handleButton(event){
             containerEl.innerHTML="";
 
             if(movieTitle === undefined){
+
+                let errorContainerEl = document.createElement("div");
+                errorContainerEl.classList.add("movie__error-container");
+                containerEl.appendChild(errorContainerEl);
+
                 let errorEl = document.createElement("img");
                 errorEl.classList.add("movie__error");
                 errorEl.setAttribute("src", "../images/invalid-title.png");
-                containerEl.appendChild(errorEl);
+                errorEl.setAttribute("alt", `Invalid Error Message`);
+                errorContainerEl.appendChild(errorEl);
 
                 let errorMsgEl = document.createElement("h2");
                 errorMsgEl.classList.add("movie__error-message");
                 errorMsgEl.textContent = `Please enter a valid Movie Title`;
-                containerEl.appendChild(errorMsgEl);
+                errorContainerEl.appendChild(errorMsgEl);
 
             } else {
 
@@ -63,6 +69,7 @@ function handleButton(event){
                 posterAnchor.classList.add("movie__anchor");
                 posterAnchor.setAttribute("href", `https://www.imdb.com/title/${movieId}/`);
                 posterAnchor.setAttribute("target", "_blank");
+                posterAnchor.setAttribute("alt", `${movieTitle} Poster`);
                 movieLeft.appendChild(posterAnchor);
 
                 let posterEl = document.createElement("img");

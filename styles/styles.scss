@@ -86,9 +86,8 @@ body{
     padding: 1rem 1rem;
 
     @include tablet{
-        display: flex;
+        flex-direction: row;
         justify-content: center;
-        align-items: center;
         padding: 2rem;
         width: 80%;
         min-height: 60vh;
@@ -97,14 +96,18 @@ body{
     @include desktop{
         width: 60%;
     }
-
+    &__error-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
     &__error{
+
         min-width: 180px;
         width: 50%;
     }
 
     &__error-message{
-        display: block;
         color: #dc1a28;
 
     }

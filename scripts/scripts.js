@@ -1,5 +1,5 @@
 let movieTitle = '';
-const movieInfo = `http://www.omdbapi.com/?apikey=e145bd69&t=${movieTitle}&plot=full`;
+const movieInfo = `http://www.omdbapi.com/?apikey=e145bd69&t=${movieTitle}&plot`;
 
 const formButton = document.getElementById("formButton");
 formButton.addEventListener("click", handleButton);
@@ -9,22 +9,25 @@ let inputSearch = document.querySelector(".form__search");
 
 function handleButton(event){
     event.preventDefault();
-    console.log("clicked");
+    let movieTitle = inputSearch.value;
 
-    movieTitle = inputSearch.value;
+    inputSearch.value = '';
     if (movieTitle !== ""){
         console.log(movieTitle);
         let movieInfo = `http://www.omdbapi.com/?apikey=e145bd69&t=${movieTitle}&plot=full`;
-
-        inputSearch.value = '';
-
+        
         axios.get(movieInfo).then(response => {
 
             const movieInfo= response.data;
+            console.log(movieInfo);
             let moviePlot = movieInfo.Plot;
             let movieTitle = movieInfo.Title;
             let moviePoster = movieInfo.Poster;
             let movieYear = movieInfo.Year;
+            let movieGenre = movieInfo.Genre;
+            let movieRating = movieInfo.imdbRating;
+            let movieId = movieInfo.imdbID;
+
 
             let containerEl = document.querySelector(".movie");
             containerEl.innerHTML="";
@@ -44,13 +47,18 @@ function handleButton(event){
             yearEl.textContent = `(${movieYear})`;
             movieLeft.appendChild(yearEl);
 
+            let posterAnchor = document.createElement("a");
+            posterAnchor.classList.add("movie__anchor");
+            posterAnchor.setAttribute("href", `https://www.imdb.com/title/${movieId}/`);
+            posterAnchor.setAttribute("target", "_blank");
+            movieLeft.appendChild(posterAnchor);
+
             let posterEl = document.createElement("img");
             posterEl.classList.add("movie__poster");
             posterEl.setAttribute("src", moviePoster);
-            movieLeft.appendChild(posterEl);
+            posterAnchor.appendChild(posterEl);
 
             // Right Section
-
             let movieRight = document.createElement("div");
             movieRight.classList.add("movie__right");
             containerEl.appendChild(movieRight);
@@ -68,6 +76,31 @@ function handleButton(event){
             yearEl2.classList.add("movie__year--not-mobile");
             yearEl2.textContent = `(${movieYear})`;
             movieRightTop.appendChild(yearEl2);
+
+            let movieRightMid = document.createElement("div");
+            movieRightMid.classList.add("movie__right-middle");
+            movieRight.appendChild(movieRightMid);
+
+            let genreEl = document.createElement("h3")
+            genreEl.classList.add("movie__plot");
+            genreEl.textContent = movieGenre;
+            movieRightMid.appendChild(genreEl);
+
+            let ratingContainer = document.createElement("div");
+            ratingContainer.classList.add("movie__rating-container");
+            ratingContainer.setAttribute("src", "../images/gold-star.svg.png");
+            movieRightMid.appendChild(ratingContainer);
+
+            let starEl = document.createElement("img");
+            starEl.classList.add("movie__star");
+            starEl.setAttribute("src", "../images/gold-star.svg.png");
+            ratingContainer.appendChild(starEl);
+
+            let ratingEl = document.createElement("p")
+            starEl.classList.add("movie__rating");
+            ratingEl.textContent = movieRating;
+            ratingContainer.appendChild(ratingEl);
+
     
             let movieInfoEl = document.createElement("div");
             movieInfoEl.classList.add("movie__info");

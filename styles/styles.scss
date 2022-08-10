@@ -26,7 +26,7 @@ body{
     }
 
     @include desktop{
-        padding: 1rem 8rem;
+        padding: 1rem 12%;
     }
 
     &__logo{
@@ -63,6 +63,7 @@ body{
     text-transform: uppercase;
     border-radius: 0 4px 4px 0;
     padding: 0.5rem 1rem;
+    cursor: pointer;
 
     &:hover{
         background-color: #91070e;
@@ -102,9 +103,10 @@ body{
     &__right{
         @include tablet{
             max-width: 65%;
-            margin-left: 1rem;
+            margin-left: 2rem;
         }
     }
+
     &__right-top{
         display: flex;
         align-content: center;
@@ -112,9 +114,42 @@ body{
         width: 100%;
     }
 
+    &__right-middle{
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: space-between;
+        width: 100%;
+
+        @include tablet{
+            flex-direction: row;
+        }
+    }
+
     &__poster{
+        transition: 0.5s ease;
         max-width: 200px;
         border-radius: 4px;
+
+        &:hover{
+            opacity: 0.5;
+        }
+    }
+
+    &__rating-container{
+        display: flex;
+        align-self: center;
+    }
+
+    &__rating{
+        font-size: 12px;
+    }
+
+    &__star{
+        align-self: center;
+        width: 1rem;
+        height: 1rem;
+        margin-right: 0.3rem;
     }
 
     &__title--mobile{
@@ -154,6 +189,7 @@ body{
     }
 
     &__plot{
+        align-self: center;
         font-size: 12px;
         text-align: justify;
         line-height: 1rem;

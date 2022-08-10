@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles.css" type='text/css'/>
+    <link rel="stylesheet" href="./styles/styles.css" type='text/css'/>
     <link href="http://fonts.cdnfonts.com/css/fff-galaxy" rel="stylesheet">
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <title>PlotFlix</title>
@@ -13,7 +13,7 @@
 <body>
     <header>
         <nav class="nav">
-            <img class="nav__logo" src="./images/plotflix.png" alt="plotflix logo"/>
+            <a href="./index.html"><img class="nav__logo" src="./images/plotflix-red.png" alt="plotflix logo"/></a>
             <form class="nav__form">
                 <input class="form__search" name="search" type="text" placeholder="Search Movie Title..."></input>
                 <button id="formButton" class="form__button" type="submit">Search</button>
@@ -24,20 +24,28 @@
     <main class="main">
 
         <section class="movie">
-            <div class="movie__left">
+            <!-- <video autoplay muted loop id="myVideo">
+                <source src="rain.mp4" type="video/mp4">
+            </video> -->
+            <h1 class="txt">WHAT IS THE PLOT?</h1>
+
+            <!-- <div class="movie__left">
                 <h2 class="movie__title--mobile">Movie Title</h2>
                 <h2 class="movie__year--mobile">(Year)</h2>
                 <img class="movie__poster" src="https://m.media-amazon.com/images/M/MV5BOGZhM2FhNTItODAzNi00YjA0LWEyN2UtNjJlYWQzYzU1MDg5L2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg"/>
             </div>
             <div class="movie__right">
-                <h2 class="movie__title--not-mobile">Movie Title</h2>
-                <h2 class="movie__year--not-mobile">(Year)</h2>
+                <div class="movie__right-top">
+                    <h2 class="movie__title--not-mobile">Movie Title</h2>
+                    <h2 class="movie__year--not-mobile">(Year)</h2>
+                </div>
+             
                 <div class="movie__info">
                     <p class="movie__plot">Movie Plot</p>
                 </div>
-            </div>
+            </div> -->
         </section>
     </main>
-    <script src="scripts.js"></script>
+    <script src="./scripts/scripts.js"></script>
 </body>
 </html>

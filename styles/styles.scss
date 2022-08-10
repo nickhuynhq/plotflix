@@ -1,0 +1,218 @@
+@use "../partials/mixins" as *;
+
+*, ::before, ::after {
+    box-sizing: border-box;
+}
+  
+body{
+    font-family: Verdana, sans-serif;
+    font-weight: 400;
+    margin: 0;
+    background-image: url("../images/background-image.jpg");
+   
+}
+
+.nav{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 1rem;
+    background-color: #373737;
+
+    @include tablet{
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 1rem 4rem;
+    }
+
+    @include desktop{
+        padding: 1rem 8rem;
+    }
+
+    &__logo{
+        max-width: 140px;
+        margin-bottom: 1rem;
+
+        @include tablet{
+            margin: 0;
+        }
+    }
+}
+.nav__form{
+    display: flex;
+}
+
+.form__search{
+    background-color: #1c1c1c;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    padding: 0.5rem;
+
+    &:focus{
+        border: 1px solid #91070e;
+        outline: none;
+    }
+}
+
+.form__button{
+    background-color: #E50914;
+    color: #FFFFFF;
+    font-weight: 400;
+    border: none;
+    text-transform: uppercase;
+    border-radius: 0 4px 4px 0;
+    padding: 0.5rem 1rem;
+
+    &:hover{
+        background-color: #91070e;
+    }
+}
+
+.main{
+    display: flex;
+    justify-content: center;
+}
+.movie{
+    background: rgb(0,0,0,0.7);
+    color: #FFF;
+    margin: 1rem 1rem;
+    border-radius: 10px;
+    padding: 0rem 1rem;
+
+    @include tablet{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+        width: 80%;
+        min-height: 60vh;
+    }
+
+    @include desktop{
+        width: 60%;
+    }
+
+    &__left{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__right{
+        @include tablet{
+            max-width: 65%;
+            margin-left: 1rem;
+        }
+    }
+    &__right-top{
+        display: flex;
+        align-content: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    &__poster{
+        max-width: 200px;
+        border-radius: 4px;
+    }
+
+    &__title--mobile{
+
+        @include tablet{
+            display: none;
+        }
+    }
+
+    &__title--not-mobile{
+        display: none;
+    
+        @include tablet{
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    &__year--mobile{
+        margin-top: -1rem;
+        font-size: 1rem;
+        color: #f3f3f3;
+        @include tablet{
+            display: none;
+        }
+    }
+
+    &__year--not-mobile{
+        display: none;
+        font-size: 1rem;
+        color: #f3f3f3;
+
+        @include tablet{
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    &__plot{
+        font-size: 12px;
+        text-align: justify;
+        line-height: 1rem;
+    }
+}
+
+// PLOTFLIX LOGO ANIMATION
+
+@function makelongshadow($length,$angle) {
+    $val: 0px 0px transparent;
+    @for $i from 1 through $length {
+      $val: #{$val}, #{$i}px #{$i*$angle}px #aaa;
+    }
+    @return $val;
+  }
+  
+  @import url('https://fonts.googleapis.com/css?family=Roboto:700,900');
+  
+  .txt {
+    text-align: center;
+    font-family: 'Roboto';
+    font-size: 6vmin;
+    font-weight: 700;
+    animation: netflix_style 5s;
+    outline: none;
+    white-space: nowrap;
+    color:#e90418;
+  }
+  
+  @keyframes netflix_style {
+    0% {
+      text-shadow: makelongshadow(30,1);
+      color:#f3f3f3;
+      transform: scale(1.5, 1.5);
+    }
+    10% {
+      text-shadow: makelongshadow(30,1.5);
+      color:#f3f3f3;
+      transform: scale(1.5, 1.5);
+    }
+    15% {
+       color:#f3f3f3;
+    }
+    20% {    
+      color:#e90418;
+      text-shadow: none;
+      transform: scale(1.1, 1.1);
+    }
+    75% {
+      opacity: 1;
+    }
+    80% {
+      opacity: 0;    
+      color:#e90418;
+      transform: scale(0.85, 0.9);
+    }
+    
+    100% {
+      opacity: 0;
+      
+    }
+  }

@@ -1,11 +1,12 @@
 @use "../partials/mixins" as *;
+@import url('https://fonts.googleapis.com/css?family=Roboto:700,900');
 
 *, ::before, ::after {
     box-sizing: border-box;
 }
   
 body{
-    font-family: Verdana, sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: 400;
     margin: 0;
     background-image: url("../images/background-image.jpg");
@@ -75,11 +76,14 @@ body{
     justify-content: center;
 }
 .movie{
-    background: rgb(0,0,0,0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgb(0,0,0,0.75);
     color: #FFF;
     margin: 1rem 1rem;
     border-radius: 10px;
-    padding: 0rem 1rem;
+    padding: 1rem 1rem;
 
     @include tablet{
         display: flex;
@@ -92,6 +96,17 @@ body{
 
     @include desktop{
         width: 60%;
+    }
+
+    &__error{
+        min-width: 180px;
+        width: 50%;
+    }
+
+    &__error-message{
+        display: block;
+        color: #dc1a28;
+
     }
 
     &__left{
@@ -112,6 +127,9 @@ body{
         align-content: center;
         justify-content: space-between;
         width: 100%;
+        @include tablet{
+            margin-bottom: 0;
+        }
     }
 
     &__right-middle{
@@ -191,6 +209,8 @@ body{
     &__plot{
         align-self: center;
         font-size: 12px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+
         text-align: justify;
         line-height: 1rem;
     }
@@ -206,49 +226,53 @@ body{
     @return $val;
   }
   
-  @import url('https://fonts.googleapis.com/css?family=Roboto:700,900');
+
   
-  .txt {
-    text-align: center;
-    font-family: 'Roboto';
-    font-size: 6vmin;
-    font-weight: 700;
-    animation: netflix_style 5s;
-    outline: none;
-    white-space: nowrap;
-    color:#e90418;
-  }
-  
-  @keyframes netflix_style {
+.txt {
+text-align: center;
+font-family: 'Roboto';
+font-size: 7vmin;
+font-weight: 700;
+animation: netflix_style 7s;
+outline: none;
+white-space: nowrap;
+color:#e90418;
+
+    @include tablet{
+        font-size: 10vmin;
+    }
+}
+
+@keyframes netflix_style {
     0% {
-      text-shadow: makelongshadow(30,1);
-      color:#f3f3f3;
-      transform: scale(1.5, 1.5);
+        text-shadow: makelongshadow(20,1);
+        color:#f3f3f3;
+        transform: scale(1.5, 1.5);
     }
     10% {
-      text-shadow: makelongshadow(30,1.5);
-      color:#f3f3f3;
-      transform: scale(1.5, 1.5);
+        text-shadow: makelongshadow(15,1.5);
+        color:#f3f3f3;
+        transform: scale(1.5, 1.5);
     }
     15% {
-       color:#f3f3f3;
+        color:#f3f3f3;
     }
     20% {    
-      color:#e90418;
-      text-shadow: none;
-      transform: scale(1.1, 1.1);
+        color:#e90418;
+        text-shadow: none;
+        transform: scale(1.1, 1.1);
     }
     75% {
-      opacity: 1;
+        opacity: 1;
     }
     80% {
-      opacity: 0;    
-      color:#e90418;
-      transform: scale(0.85, 0.9);
+        opacity: 0;    
+        color:#e90418;
+        transform: scale(0.85, 0.9);
     }
-    
+
     100% {
-      opacity: 0;
-      
+        opacity: 0;
+        
     }
-  }
+}
